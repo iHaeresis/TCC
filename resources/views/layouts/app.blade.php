@@ -27,8 +27,8 @@
                 <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
                     <a class="no-underline hover:underline" href="/">Página Inicial</a>
                     <a class="no-underline hover:underline" href="/alunos">Alunos</a>
-                    <a class="no-underline hover:underline" href="#">Escolas</a>
-                    <a class="no-underline hover:underline" href="#">CID</a>
+                    <a class="no-underline hover:underline" href="/escolas">Escolas</a>
+                    <a class="no-underline hover:underline" href="/cid">CID</a>
                     |
                     @guest
                         <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>

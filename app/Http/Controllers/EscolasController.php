@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Aluno;
 
-class AlunosController extends Controller
+class EscolasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,16 +13,7 @@ class AlunosController extends Controller
      */
     public function index()
     {
-
-        $post = aluno::all();
-        dd($post);
-        return view('alunos.index');
-
-        /*
-        return view('alunos.index')
-            ->with('alunos', Aluno::orderBy('updated_at', 'DESC')->get());
-        */
-
+        return view('escolas.index');
     }
 
     /**
@@ -33,7 +23,7 @@ class AlunosController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**

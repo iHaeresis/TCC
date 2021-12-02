@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AlunosController;
+use App\Http\Controllers\EscolasController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\CidController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,6 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'index']);
 Route::resource('/alunos', AlunosController::class);
+
+Route::get('/escolas',[EscolasController::class, 'index']);
+route::resource('/escolas', EscolasController::class);
+
+Route::get('/cid',[Cid::class, 'index']);
+route::resource('/cid', CidController::class);
 
 
 Auth::routes();
