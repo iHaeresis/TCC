@@ -7,35 +7,29 @@
             <h1 class="text-6xl">
                 Alunos Cadastrados
             </h1>
-
-            <div>
-
-            </div>
-<p>aqui</p>
-{{ $alunos }}
-
-            <div class="text-left">
-                <br><br>
-                <h2 class="text-gray-700 font-bold text-5xl pb-4">
-                    Nome do aluno
-                </h2>
-
-                <span class="text-gray-500">
-                    por <span class="font-bold italic text-gray-800">Arthure</span>, 1 dia atrás.
-                </span>
-
-                <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, blanditiis. Tenetur ipsam alias a eum tempora, quos asperiores rem! Aliquid labore atque veniam repellat porro sunt doloremque nobis architecto est.
-                </p>
-
-                <a href="" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
-                    Ver mais
-                </a>
-
-            </div>
-
         </div>
 
-    </div>
 
+        @foreach ($alunos as $aluno)
+                <div class="text-left">
+                    <br><br>
+                    <h2 class="text-gray-700 font-bold text-5xl pb-4">
+                        {{ $aluno->title }}
+                    </h2>
+
+                    <span class="text-gray-500">
+                        por <span class="font-bold italic text-gray-800">{{ $aluno->user->name }}</span>, criado em {{ date('jS M Y', strtotime($aluno->updated_at)) }}
+                    </span>
+
+                    <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+                        {{ $aluno->description }}
+                    </p>
+
+                    <a href="/alunos/{{ $aluno->slug }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                        Ver mais
+                    </a>
+                </div>
+        @endforeach
+    <br><br>
+    </div>
 @endsection
