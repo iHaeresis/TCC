@@ -10,6 +10,10 @@ class PagesController extends Controller
         return view('index');
     }
 
+    public function about(){
+        return view('about');
+    }
+
     public function escolas(){
         return view('escolas.index');
 
@@ -19,6 +23,7 @@ class PagesController extends Controller
         return view('cid.index');
 
     }
+
 
 }
 

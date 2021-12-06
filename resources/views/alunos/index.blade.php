@@ -9,10 +9,32 @@
             </h1>
         </div>
 
+        @if (session()->has('message'))
+            <div class="w-4/5" m-auto mt-10 pl-2>
+                <p class="w-1/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4">
+                    {{ session()->get('message') }}
+                </p>
+
+            </div>
+        @endif
+
+
+        @if (Auth::check())
+            <div class="pt-15 w-4/5 m-auto">
+                <a href="/alunos/create"
+                class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">Cadastrar Aluno</a>
+            </div>
+        @endif
+
 
         @foreach ($alunos as $aluno)
                 <div class="text-left">
                     <br><br>
+
+                    <div>
+                        <img src="{{ asset('images/' . $aluno->image_path) }}">
+                    </div>
+
                     <h2 class="text-gray-700 font-bold text-5xl pb-4">
                         {{ $aluno->title }}
                     </h2>
@@ -25,10 +47,36 @@
                         {{ $aluno->description }}
                     </p>
 
-                    <a href="/alunos/{{ $aluno->slug }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
-                        Ver mais
+                    <a href="/alunos/{{ $aluno->id }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-4 rounded-3xl">
+                        Leia mais
                     </a>
+
+                    {{-- Adicionando um botão para editar se o usuário é o criador do aluno --}}
+
+                    @if (isset(Auth::user()->id) && Auth::user()->id == $aluno->user_id)
+                        <span class="float-right">
+                            <a href="/alunos/{{ $aluno->id }}/edit"
+                                class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
+                                Editar
+                            </a>
+                        </span>
+
+                        <span class="float-right">
+                            <form
+                                action="/alunos/{{ $aluno->id }}"
+                                method="POST">
+                                @csrf
+                                @method('delete')
+
+                                <button
+                                    class="text-red-500 pr-3"
+                                    type="submit">
+                                    Deletar
+                                </button>
+                            </form>
+                    @endif
                 </div>
+                 <br><br><hr>
         @endforeach
     <br><br>
     </div>

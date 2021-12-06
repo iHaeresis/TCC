@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aluno;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AlunosController extends Controller
 {
+
+    /**
+     * Criando segurança que impede usuários de editar/cadastrar sem estar logado
+     *
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +44,7 @@ class AlunosController extends Controller
      */
     public function create()
     {
-
+        return view('alunos.create');
     }
 
     /**
@@ -44,7 +55,27 @@ class AlunosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|mimes: jpg,png,jpg|max:5048'
+        ]);
+
+        $newImageName = uniqid() . '-' . $request->title . '.' .
+        $request->image->extension();
+
+        $request->image->move(public_path('images'), $newImageName);
+
+
+        Aluno::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->title),
+            'image_path' => $newImageName,
+            'user_id' => auth()->user()->id
+        ]);
+
+        return redirect( '/alunos')->with('message', 'Aluno cadastrado com sucesso!');
     }
 
     /**
@@ -55,8 +86,24 @@ class AlunosController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('alunos.show')
+            ->with('aluno', Aluno::where('id', $id)->first());
     }
+
+    /*
+    * UTILIZANDO SLUG PARA CRIAR LINKS COM BASE NO TÍTULO
+     * Display the specified resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     *
+    public function show($slug)
+    {
+        return view('alunos.show')
+            ->with('aluno', Aluno::where('slug', $slug)->first());
+
+    }
+    **/
 
     /**
      * Show the form for editing the specified resource.
@@ -66,7 +113,8 @@ class AlunosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('alunos.edit')
+            ->with('aluno', Aluno::where('id', $id)->first());
     }
 
     /**
@@ -78,7 +126,21 @@ class AlunosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        Aluno::where('id', $id)
+            ->update([
+                'title' => $request->input('title'),
+                'description' => $request->input('description'),
+                'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->title),
+                'user_id' => auth()->user()->id
+            ]);
+
+            return redirect('/alunos')
+                ->with('message', 'Os dados foram atualizados');
     }
 
     /**
@@ -89,6 +151,10 @@ class AlunosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $aluno = Aluno::where('id', $id);
+        $aluno->delete();
+
+        return redirect('/alunos')
+        ->with('message', 'O aluno foi apagado do sistema');
     }
 }
