@@ -7,33 +7,85 @@
             <h1 class="text-6xl">
                 Escolas Cadastradas
             </h1>
-
-            <div>
-
-            </div>
-
-            <div class="text-left">
-                <br><br>
-                <h2 class="text-gray-700 font-bold text-5xl pb-4">
-                    Escola Fundamental de Ensino Fundamental ABC
-                </h2>
-
-                <span class="text-gray-500">
-                    por <span class="font-bold italic text-gray-800">Arthure</span>, 1 dia atrás.
-                </span>
-
-                <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, blanditiis. Tenetur ipsam alias a eum tempora, quos asperiores rem! Aliquid labore atque veniam repellat porro sunt doloremque nobis architecto est.
-                </p>
-
-                <a href="" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
-                    Ver mais
-                </a>
-
-            </div>
-
         </div>
 
-    </div>
+        @if (session()->has('message'))
+            <div class="w-4/5" m-auto mt-10 pl-2>
+                <p class="w-1/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4">
+                    {{ session()->get('message') }}
+                </p>
 
+            </div>
+        @endif
+
+
+        @if (Auth::check())
+            <div class="pt-15 w-4/5 m-auto">
+                <a href="/escolas/create"
+                class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">Cadastrar Escola</a>
+            </div>
+        @endif
+
+
+        @foreach ($escolas as $escola)
+                <div class="text-left">
+                    <br><br>
+
+                    <h2 class="text-gray-700 font-bold text-5xl pb-4">
+                        {{ $escola->escola_nome }}
+                    </h2>
+
+                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
+                        {{ $escola->escola_rua }}
+                    </p>
+
+                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
+                        {{ $escola->escola_numero }}
+                    </p>
+
+                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
+                        {{ $escola->escola_bairro }}
+                    </p>
+
+                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
+                        {{ $escola->escola_cep }}
+                    </p>
+
+                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
+                        {{ $escola->escola_telefone }}
+                    </p>
+
+                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
+                        {{ $escola->escola_email }}
+                    </p>
+
+                    { <a href="/escolas/{{ $escola->id }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-4 rounded-3xl">
+                        Veja mais
+                    </a> -
+
+                        <span class="float-right">
+                            <a href="/escolas/{{ $escola->id }}/edit"
+                                class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
+                                Editar
+                            </a>
+                        </span>
+
+                        <span class="float-right">
+                            <form
+                                action="/escolas/{{ $escolas->id }}"
+                                method="POST">
+                                @csrf
+                                @method('delete')
+
+                                <button
+                                    class="text-red-500 pr-3"
+                                    type="submit">
+                                    Deletar
+                                </button>
+                            </form>
+                </div>
+                 <br><br><hr>
+        @endforeach
+    <br><br>
+    </div>
 @endsection

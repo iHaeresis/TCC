@@ -42,7 +42,11 @@
             <textarea
                 name="description"
                 placeholder="Descrição"
+                {{--
+                class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none" id="article-ckeditor" name="article-ckeditor">
+                --}}
                 class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none">
+
             </textarea>
 
             <div class="bg-grey-lighter pt-15">

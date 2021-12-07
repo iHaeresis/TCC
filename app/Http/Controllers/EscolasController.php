@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Escola;
 
 class EscolasController extends Controller
 {
+     /**
+     * Criando segurança que impede usuários de editar/cadastrar sem estar logado
+     *
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,12 @@ class EscolasController extends Controller
      */
     public function index()
     {
-        return view('escolas.index');
+        return view('escolas.index')
+            ->with('escolas',
+                Escola::orderBy('id',
+                    'DESC')
+                        ->first()
+                    );
     }
 
     /**
@@ -23,7 +38,7 @@ class EscolasController extends Controller
      */
     public function create()
     {
-        //
+        return view('escolas.create');
     }
 
     /**
@@ -34,7 +49,28 @@ class EscolasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'escola_nome' => 'required',
+            'escola_cep' => 'required',
+            'escola_rua' => 'required',
+            'escola_numero' => 'required',
+            'escola_bairro' => 'required',
+            'escola_telefone' => 'required',
+            'escola_email' => 'required'
+        ]);
+
+        Escola::create([
+            'escola_nome' => $request->input('escola_nome'),
+            'escola_cep' => $request -> input('escola_cep'),
+            'escola_rua' => $request->input('escola_cep'),
+            'escola_numero' => $request->input('escola_numero'),
+            'escola_bairro' => $request->input('escola_bairro'),
+            'escola_telefone' => $request->input('escola_telefone'),
+            'escola_email' => $request->input('escola_email')
+
+        ]);
+
+        return redirect( '/escolas')->with('message', 'Escola cadastrada com sucesso!');
     }
 
     /**
@@ -45,7 +81,8 @@ class EscolasController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('escolas.show')
+            ->with('escola', Escola::where('id', $id)->first());
     }
 
     /**
@@ -56,7 +93,8 @@ class EscolasController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('escolas.edit')
+            ->with('escola', Escola::where('id', $id)->first());
     }
 
     /**
@@ -68,7 +106,31 @@ class EscolasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'escola_nome' => 'required',
+            'escola_cep' => 'required',
+            'escola_rua' => 'required',
+            'escola_numero' => 'required',
+            'escola_bairro' => 'required',
+            'escola_telefone' => 'required',
+            'escola_email' => 'required'
+
+        ]);
+
+        Escola::where('id', $id)
+            ->update([
+                'escola_nome' => $request->input('escola_nome'),
+                'escola_cep' => $request -> input('escola_cep'),
+                'escola_rua' => $request->input('escola_cep'),
+                'escola_numero' => $request->input('escola_numero'),
+                'escola_bairro' => $request->input('escola_bairro'),
+                'escola_telefone' => $request->input('escola_telefone'),
+                'escola_email' => $request->input('escola_email')
+            ]);
+
+            return redirect('/alunos')
+              ->with('message', 'Os dados foram atualizados');
+
     }
 
     /**
@@ -79,6 +141,10 @@ class EscolasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $escola = Escola::where('id', $id);
+        $escola->delete();
+
+        return redirect('/alunos')
+            ->with('message', 'A escola foi apagada do sistema');
     }
 }
