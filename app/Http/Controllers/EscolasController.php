@@ -13,7 +13,7 @@ class EscolasController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show']] );
     }
 
     /**
@@ -24,10 +24,8 @@ class EscolasController extends Controller
     public function index()
     {
         return view('escolas.index')
-            ->with('escolas',
-                Escola::orderBy('id',
-                    'DESC')
-                        ->first()
+            ->with('escolas', Escola::orderBy('id', 'DESC')
+                        ->get()
                     );
     }
 
@@ -144,7 +142,7 @@ class EscolasController extends Controller
         $escola = Escola::where('id', $id);
         $escola->delete();
 
-        return redirect('/alunos')
+        return redirect('/escolas')
             ->with('message', 'A escola foi apagada do sistema');
     }
 }

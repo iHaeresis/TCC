@@ -49,16 +49,20 @@
             </div>
         </div>
 
+    <br>
     <hr>
     <br>
 
-            <div class="">
-                <h3>Contato</h3>
-            </div>
+    <div class=" m-auto text-left">
+        <div class="py-15">
+            <h1 class="text-6xl font-bold">
+                Contato
+            </h1>
+        </div>
 
             <div class="">
                 <div class="py-5">
-                    <h4 class="text-4xl font-medium italic">Telefone</h4>
+                    <h4 class="text-4xl font-medium italic">Telefone:</h4>
                     <span class="text-black-500 py-5"><br>
                         {{ $escola->escola_telefone }}
                     </span>
@@ -67,7 +71,7 @@
 
             <div class="">
                 <div class="py-5">
-                    <h4 class="text-4xl font-medium italic">E-mail</h4>
+                    <h4 class="text-4xl font-medium italic">E-mail:</h4>
                     <span class="text-black-500 py-5"><br>
                         {{ $escola->escola_email }}
                     </span>

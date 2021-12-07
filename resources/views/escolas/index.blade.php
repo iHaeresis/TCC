@@ -35,33 +35,10 @@
                         {{ $escola->escola_nome }}
                     </h2>
 
-                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
-                        {{ $escola->escola_rua }}
-                    </p>
-
-                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
-                        {{ $escola->escola_numero }}
-                    </p>
-
-                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
-                        {{ $escola->escola_bairro }}
-                    </p>
-
-                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
-                        {{ $escola->escola_cep }}
-                    </p>
-
-                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
-                        {{ $escola->escola_telefone }}
-                    </p>
-
-                    <p class="text-xl text-gray-700 pt-5 pb-5 leading-8 font-light">
-                        {{ $escola->escola_email }}
-                    </p>
-
-                    { <a href="/escolas/{{ $escola->id }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-4 rounded-3xl">
+                    <br>
+                    <a href="/escolas/{{ $escola->id }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-4 rounded-3xl">
                         Veja mais
-                    </a> -
+                    </a>
 
                         <span class="float-right">
                             <a href="/escolas/{{ $escola->id }}/edit"
@@ -72,7 +49,7 @@
 
                         <span class="float-right">
                             <form
-                                action="/escolas/{{ $escolas->id }}"
+                                action="/escolas/{{ $escola->id }}"
                                 method="POST">
                                 @csrf
                                 @method('delete')
@@ -85,7 +62,8 @@
                             </form>
                 </div>
                  <br><br><hr>
-        @endforeach
+     @endforeach
+
     <br><br>
     </div>
 @endsection
