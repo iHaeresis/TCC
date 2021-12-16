@@ -40,6 +40,7 @@
                         Veja mais
                     </a>
 
+                   {{-- @if (isset(Auth::user()->id) && Auth::user()->id == $escola->user_id) --}}
                         <span class="float-right">
                             <a href="/escolas/{{ $escola->id }}/edit"
                                 class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
@@ -60,6 +61,7 @@
                                     Deletar
                                 </button>
                             </form>
+                    {{-- @endif--}}
                 </div>
                  <br><br><hr>
      @endforeach

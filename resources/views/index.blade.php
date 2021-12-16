@@ -10,38 +10,57 @@
                 </h1>
                 <div class="center text-gray-600">
                     <p>Bem vindo Sistema Escolar Integrado</p>
-                    <p>Esta versão é um protótipo do meu trabalho de Conclusão de Curso.</p>
-                    <p>laia</p>
+                    <p>Esta versão é um <b class="uppercase">protótipo</b> do meu trabalho de Conclusão de Curso.</p>
                 </div>
             </div>
         </div>
+
     </div>
 
     <hr>
 
+    <div class="w-4/5 mx-auto py-15 border-b border-gray-200">
+        <div class="left text-gray-600">
+            <p>A intenção deste sistema é integrar e pular etapas de forma  mais prática e simples do contato entre os diversos funcionários que compõem o corpo escolar. </p>
+            <br>
+            <p>Neste protótipo, peço para que você tente cadastrar um Aluno e veja se as informações ali apresentadas são importantes para o seu dia-a-dia.
+                <br>
+                Utilize os botões abaixo ou no cabeçalho.
+            </p>
+            <br>
+            <p>Após, peço para que responda o formulário e me dê um <i>feedback</i> sobre o que achou do sistema e do que poderia melhorar nele, <b class="uppercase">obrigado!</b></p>
+            <br>
+            <div class="">
+                <p>att, Arthur Reis.</p>
+            </div>
+        </div>
 
-
-
+    </div>
+    <div clas="">
+        <hr>
+    <div>
     <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
-        <div>
-            <img src="https://cdn.pixabay.com/photo/2016/03/26/13/09/workspace-1280538_960_720.jpg" width="700">
+
+        <div class="m-auto sm:m-auto text-left w-4/5 ">
+            <a href="/alunos" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
+                Cadastrar Aluno
+            </a>
+        </div>
+        <div class="m-auto sm:m-auto text-left w-4/5 ">
+            <a href="/escolas" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
+                Cadastrar Escola
+            </a>
+        </div>
+
+        <div class="m-auto sm:m-auto text-left w-4/5 ">
+            <a href="/cid" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
+                Cadastrar CID
+            </a>
         </div>
 
         <div class="m-auto sm:m-auto text-left w-4/5 block">
-            <h2 class="text-4xl font-extrabold text-gray-600">
-                    Teste 03
-            </h2>
-
-            <p class="py-8 text-gray-500 text-l">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti reprehenderit deserunt consequuntur esse, nobis nulla, tempore dolore
-            </p>
-
-            <p class="font-extrabold text-gray-600 text-l pb-9">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt, laboriosam porro! Praesentium delectus, culpa ad nisi accusamus sint ut voluptates cumque libero ullam dolorum necessitatibus nobis consequatur ratione, qui possimus.
-            </p>
-
-            <a href="/alunos" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                leia mais
+            <a href="/#" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
+                Não Implementado
             </a>
         </div>
 

@@ -9,21 +9,34 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Aluno extends Model
 {
     use HasFactory;
-    use Sluggable;
+   // use Sluggable;
 
-    protected $fillable = ['title', 'slug', 'description', 'image_path', 'user_id'];
+    protected $fillable = [
+        'aluno_nome',
+        'aluno_sobrenome',
+        'aluno_pai',
+        'aluno_mae',
+        'aluno_descricao1',
+        'aluno_descricao2',
+        'aluno_nascimento',
+        'aluno_telefone',
+        'aluno_email',
+        'image_path',
+       // 'slug',
+        'user_id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function sluggable(): array
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
+    //
+    //public function sluggable(): array
+    //{
+    //    return [
+    //        'slug' => [
+    //            'source' => 'aluno_nome'
+    //        ]
+    //    ];
+    //}
 }

@@ -19,24 +19,25 @@
         @endif
 
 
-        @if (Auth::check())
-            <div class="pt-15 w-4/5 m-auto">
-                <a href="/alunos/create"
-                class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">Cadastrar Aluno</a>
-            </div>
-        @endif
 
-
+        <br><br><hr>
         @foreach ($alunos as $aluno)
                 <div class="text-left">
                     <br><br>
 
-                    <div>
-                        <img src="{{ asset('images/' . $aluno->image_path) }}">
+                    {{--
+                    <div class="sm:grid grid-cols-2 gap-100 w-4/5 mx-auto py-15 ">
+                        <div>
+                            <img src="{{ asset('images/' . $aluno->image_path) }}">
+                        </div>
+
                     </div>
+                    --}}
 
                     <h2 class="text-gray-700 font-bold text-5xl pb-4">
-                        {{ $aluno->title }}
+                        {{ $aluno->aluno_nome }}
+                        {{ $aluno->aluno_sobrenome }}
+
                     </h2>
 
                     <span class="text-gray-500">
@@ -78,6 +79,17 @@
                 </div>
                  <br><br><hr>
         @endforeach
+    <br><br>
+
+    @if (Auth::check())
+        <div class="pt-15 w-4/5 m-auto">
+            <a href="/alunos/create"
+            class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">Cadastrar Novo Aluno</a>
+            <br>
+
+        </div>
+    @endif
+
     <br><br>
     </div>
 @endsection

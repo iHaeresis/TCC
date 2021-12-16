@@ -48,13 +48,13 @@ class EscolasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'escola_nome' => 'required',
-            'escola_cep' => 'required',
-            'escola_rua' => 'required',
-            'escola_numero' => 'required',
-            'escola_bairro' => 'required',
-            'escola_telefone' => 'required',
-            'escola_email' => 'required'
+            'escola_nome' => 'sometimes',
+            'escola_cep' => 'sometimes',
+            'escola_rua' => 'sometimes',
+            'escola_numero' => 'sometimes',
+            'escola_bairro' => 'sometimes',
+            'escola_telefone' => 'sometimes',
+            'escola_email' => 'sometimes'
         ]);
 
         Escola::create([
@@ -68,7 +68,8 @@ class EscolasController extends Controller
 
         ]);
 
-        return redirect( '/escolas')->with('message', 'Escola cadastrada com sucesso!');
+        return redirect( '/escolas')
+            ->with('message', 'Escola cadastrada com sucesso!');
     }
 
     /**
@@ -105,13 +106,13 @@ class EscolasController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'escola_nome' => 'required',
-            'escola_cep' => 'required',
-            'escola_rua' => 'required',
-            'escola_numero' => 'required',
-            'escola_bairro' => 'required',
-            'escola_telefone' => 'required',
-            'escola_email' => 'required'
+            'escola_nome' => 'sometimes',
+            'escola_cep' => 'sometimes',
+            'escola_rua' => 'sometimes',
+            'escola_numero' => 'sometimes',
+            'escola_bairro' => 'sometimes',
+            'escola_telefone' => 'sometimes',
+            'escola_email' => 'sometimes'
 
         ]);
 
@@ -126,7 +127,7 @@ class EscolasController extends Controller
                 'escola_email' => $request->input('escola_email')
             ]);
 
-            return redirect('/alunos')
+            return redirect('/escolas')
               ->with('message', 'Os dados foram atualizados');
 
     }

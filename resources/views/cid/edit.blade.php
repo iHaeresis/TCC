@@ -5,10 +5,10 @@
     <div class="w-4/5 m-auto text-left">
         <div class="py-15">
             <h1 class="text-6xl">
-                Cadastrar CID
+                Editar Dados do CID
             </h1>
         </div>
-{{--
+
 @if ($errors->any())
 
         <div class="w-4/5 m-auto">
@@ -24,42 +24,41 @@
         </div>
 
 @endif
---}}
 
 
     <div class="w4/5 m-auto pt-20">
         <form
-            action="/cid"
+            action="/cid/{{ $cid->id}}"
             method="POST"
             enctype="multipart/form-data">
             @csrf
+            @method('PUT')
 
             <input
                 type="text"
                 name="cid_nome"
-                placeholder="Nome do CID"
+                value="{{ $cid->cid_nome }}"
                 class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
-            <br><br><br>
-            <input
-                type="text"
-                name="cid_cod"
-                placeholder="Código do CID"
-                class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
-            <br><br><br>
-            <div>
-                <p class="text-3xl text-black font-bold">Descrição</p>
-                <textarea
-                    name="cid_descricao"
-                    placeholder="Adicione a descrição do CID"
-                    class="py-20 bg-gray-200 block border-b-2 w-full h-60 text-xl outline-none text-black">
-                </textarea>
-            </div>
 
+            <textarea
+                name="cid_codigo"
+                placeholder="Código"
+                class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none">
+                {{ $cid->cid_codigo}}
+            </textarea>
+
+            <textarea
+                name="description"
+                placeholder="Descrição"
+                class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none">
+                {{ $cid->cid_descricao}}
+            </textarea>
 
             <button
                 type="submit"
                 class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Salvar
+
             </button>
         </form>
     </div>

@@ -29,7 +29,7 @@
     -->
 
 </head>
-<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
+<body class="bg-gray-200 h-screen antialiased leading-none font-sans">
     <div id="app">
         <header class="bg-gray-800 py-6">
             <div class="container mx-auto flex justify-between items-center px-6">

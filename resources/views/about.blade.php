@@ -3,6 +3,10 @@
 
 @section('content')
 
-<p>Sobre mim</p>
+<div class="w-300">
+    <br>
+    <p>Sobre mim</p>
+    <br>
+</div>
 
 @endsection

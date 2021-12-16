@@ -56,21 +56,35 @@ class AlunosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'required|mimes: jpg,png,jpg|max:5048'
+            'aluno_nome' => 'sometimes',
+            'aluno_sobrenome' => 'sometimes',
+            'aluno_pai' => 'sometimes',
+            'aluno_mae' => 'sometimes',
+            'aluno_nascimento' => 'sometimes',
+            'aluno_descricao1' => 'sometimes',
+            'aluno_descricao2' => 'sometimes',
+            'aluno_telefone' => 'sometimes',
+            'aluno_email' => 'sometimes',
+            'image' => 'sometimes|mimes: jpg,png,jpg|max:5048'
         ]);
 
-        $newImageName = uniqid() . '-' . $request->title . '.' .
+        $newImageName = uniqid() . '-' . $request->aluno_nome . '.' .
         $request->image->extension();
 
         $request->image->move(public_path('images'), $newImageName);
 
 
         Aluno::create([
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->title),
+            'aluno_nome' => $request->input('aluno_nome'),
+            'aluno_sobrenome' => $request->input('aluno_sobrenome'),
+            'aluno_pai' => $request->input('aluno_pai'),
+            'aluno_mae' => $request->input('aluno_mae'),
+            'aluno_nascimento' => $request->input('aluno_nascimento'),
+            'aluno_descricao1' => $request->input('aluno_descricao1'),
+            'aluno_descricao2' => $request->input('aluno_descricao2'),
+            'aluno_telefone' => $request -> input('aluno_telefone'),
+            'aluno_email' => $request->input('aluno_email'),
+            //'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->title),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
         ]);
@@ -127,15 +141,29 @@ class AlunosController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'aluno_nome' => 'sometimes',
+            'aluno_sobrenome' => 'sometimes',
+            'aluno_pai' => 'sometimes',
+            'aluno_mae' => 'sometimes',
+            'aluno_nascimento' => 'sometimes',
+            'aluno_descricao1' => 'sometimes',
+            'aluno_descricao2' => 'sometimes',
+            'aluno_telefone' => 'sometimes',
+            'aluno_email' => 'sometimes',
         ]);
 
         Aluno::where('id', $id)
             ->update([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->title),
+                'aluno_nome' => $request->input('aluno_nome'),
+                'aluno_sobrenome' => $request->input('aluno_sobrenome'),
+                'aluno_pai' => $request->input('aluno_pai'),
+                'aluno_mae' => $request->input('aluno_mae'),
+                'aluno_nascimento' => $request->input('aluno_nascimento'),
+                'aluno_descricao1' => $request->input('aluno_descricao1'),
+                'aluno_descricao2' => $request->input('aluno_descricao2'),
+                'aluno_telefone' => $request -> input('aluno_telefone'),
+                'aluno_email' => $request->input('aluno_email'),
+               // 'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->aluno_nome),
                 'user_id' => auth()->user()->id
             ]);
 
