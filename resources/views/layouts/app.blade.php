@@ -12,12 +12,20 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    {{--
     <!-- CKEDITOR para formatação de texto -->
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace( 'summary-ckeditor' );
     </script>
+    --}}
 
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+    <script>
+      ClassicEditor.create(document.querySelector('#editor')).catch((error) => {
+        console.error(error);
+      });
+    </script>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">

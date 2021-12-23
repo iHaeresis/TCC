@@ -199,7 +199,7 @@
 
         <label>Outras informações</label><br>
         <textarea
-            id="summary-ckeditor"
+            id="editor"
             name="aluno_anam_infos"
             placeholder=""
             class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
@@ -237,5 +237,12 @@
 
 <br><br>
 </div>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+<script>
+  ClassicEditor.create(document.querySelector('#editor')).catch((error) => {
+    console.error(error);
+  });
+</script>
 
 @endsection

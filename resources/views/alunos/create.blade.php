@@ -65,6 +65,7 @@
             <label>Alimentação</label><br>
             <textarea
                 name="aluno_anam_alimentacao"
+                id="editor"
                 placeholder="Digite aqui as informações referentes a alimentação do aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
@@ -96,6 +97,7 @@
             <label>Parecer do Aluno pelo Professor</label><br>
             <textarea
                 name="aluno_descricao1"
+                id="editor"
                 placeholder="Insira seus pareceres sobre o aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
@@ -105,6 +107,7 @@
             <label>Parecer do Aluno pelo Monitor</label><br>
             <textarea
                 name="aluno_descricao2"
+                id="editor"
                 placeholder="Insira seus pareceres sobre o aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
@@ -118,6 +121,7 @@
             <label>Desenvolvimento Psicomotor</label><br>
             <textarea
                 name="aluno_anam_psicomotor"
+                id="editor"
                 placeholder="Insira as informações psicomotoras do aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
@@ -125,6 +129,7 @@
             <label>Desenvolvimento da Linguagem</label><br>
             <textarea
                 name="aluno_anam_linguagem"
+                id="editor"
                 placeholder="Insira as informações sobre a linguagem"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
@@ -132,6 +137,7 @@
             <label>Comportamento e Hábitos</label><br>
             <textarea
                 name="aluno_anam_comportamento"
+                id="editor"
                 placeholder="Insira as informações referentes aos comportamentos e hábitos do aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
@@ -139,6 +145,7 @@
             <label>Família em relação ao aluno</label><br>
             <textarea
                 name="aluno_anam_familia"
+                id="editor"
                 placeholder="Insira informações referentes família e aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
@@ -146,14 +153,15 @@
             <label>Independência do Aluno</label><br>
             <textarea
                 name="aluno_anam_independencia"
+                id="editor"
                 placeholder="Insira informações referentes família e aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
 
             <label>Outras informações</label><br>
             <textarea
-                id="summary-ckeditor"
                 name="aluno_anam_infos"
+                id="editor"
                 placeholder="Insira outras informações pertinenentes ao aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
@@ -186,4 +194,11 @@
 
     <br><br>
     </div>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+    <script>
+      ClassicEditor.create(document.querySelector('#editor')).catch((error) => {
+        console.error(error);
+      });
+    </script>
 @endsection
