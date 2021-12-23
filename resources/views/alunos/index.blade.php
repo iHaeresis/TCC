@@ -40,6 +40,18 @@
 
                     </h2>
 
+                    {{-- Mostrando se o aluno é deficiente --}}
+                    @if ($aluno->aluno_deficiencia  == 'sim')
+                        <img class="w-8 md:w-8 lg:w-8"
+                        src="{{ asset('icons/handicap.png')}}">
+                    @endif
+
+                    {{-- Mostrando se o aluno possui restricao alimentar --}}
+                    @if ($aluno->aluno_alimentacao  == 'sim')
+                        <img class="w-8 md:w-8 lg:w-8"
+                        src="{{ asset('icons/food.png')}}">
+                    @endif
+
                     <span class="text-gray-500">
                         por <span class="font-bold italic text-gray-800">{{ $aluno->user->name }}</span>, criado em {{ date('jS M Y', strtotime($aluno->updated_at)) }}
                     </span>

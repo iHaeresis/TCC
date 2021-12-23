@@ -34,21 +34,40 @@
             @csrf
 
             <label>Nome:</label><br>
-            <input type="text" name="aluno_nome" placeholder="Insira o nome"><br>
+            <input type="text" name="aluno_nome" placeholder="Insira o nome" required><br>
 
             <label>Sobrenome:</label><br>
-            <input type="text" name="aluno_sobrenome" placeholder="Insira o sobrenome"><br><br>
+            <input type="text" name="aluno_sobrenome" placeholder="Insira o sobrenome" required><br><br>
 
 
             <label>Data de Nascimento:</label><br>
-            <input type="date" name="aluno_nascimento"><br><BR>
+            <input type="date" name="aluno_nascimento" required><br><BR>
 
             <label>Selecione o gênero do Aluno</label><br>
-            <select name = "aluno_genero">
+            <select name = "aluno_genero" required>
                 <option value = "Masculino" selected>Masculino</option>
                 <option value = "Sem genero">Sem genero</option>
                 <option value = "Feminino">Feminino</option>
             </select>
+            <br><br>
+            <label>O aluno possui algum tipo de deficiência?</label><br>
+            <select name = "aluno_deficiencia" required>
+                <option value = "sim" selected>Sim</option>
+                <option value = "nao">Não</option>
+            </select>
+            <br><br>
+            <label>O aluno possui algum tipo de restrição alimentar?</label><br>
+            <select name = "aluno_alimentacao" required>
+                <option value = "sim" selected>Sim</option>
+                <option value = "nao">Não</option>
+            </select>
+            <br><br>
+            <label>Alimentação</label><br>
+            <textarea
+                name="aluno_anam_alimentacao"
+                placeholder="Digite aqui as informações referentes a alimentação do aluno"
+                class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            </textarea><br>
 
             <br><br><BR>
             <hr>
@@ -89,6 +108,56 @@
                 placeholder="Insira seus pareceres sobre o aluno"
                 class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             </textarea><br>
+
+            <br><br>
+            <hr>
+            <br><br>
+
+            <b class="">Ananmnese</b>
+            <br>
+            <label>Desenvolvimento Psicomotor</label><br>
+            <textarea
+                name="aluno_anam_psicomotor"
+                placeholder="Insira as informações psicomotoras do aluno"
+                class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            </textarea><br>
+
+            <label>Desenvolvimento da Linguagem</label><br>
+            <textarea
+                name="aluno_anam_linguagem"
+                placeholder="Insira as informações sobre a linguagem"
+                class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            </textarea><br>
+
+            <label>Comportamento e Hábitos</label><br>
+            <textarea
+                name="aluno_anam_comportamento"
+                placeholder="Insira as informações referentes aos comportamentos e hábitos do aluno"
+                class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            </textarea><br>
+
+            <label>Família em relação ao aluno</label><br>
+            <textarea
+                name="aluno_anam_familia"
+                placeholder="Insira informações referentes família e aluno"
+                class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            </textarea><br>
+
+            <label>Independência do Aluno</label><br>
+            <textarea
+                name="aluno_anam_independencia"
+                placeholder="Insira informações referentes família e aluno"
+                class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            </textarea><br>
+
+            <label>Outras informações</label><br>
+            <textarea
+                id="summary-ckeditor"
+                name="aluno_anam_infos"
+                placeholder="Insira outras informações pertinenentes ao aluno"
+                class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            </textarea><br>
+
 
             <div class="bg-grey-lighter pt-15">
                 <label class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg shadow-lg tracking-wider uppercase border border-blue coursos-pointer">

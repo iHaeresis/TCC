@@ -14,10 +14,10 @@ class Cids extends Migration
     public function up()
     {
         Schema::create('cids', function (Blueprint $table){
-            $table->increments('id');
-            $table->string('cid_nome');
-            $table->string('cid_codigo');
-            $table->longText('cid_descricao');
+            $table->increments('id')->nullable();
+            $table->string('cid_nome')->nullable();
+            $table->string('cid_codigo')->nullable();
+            $table->longText('cid_descricao')->nullable();
         });
     }
 

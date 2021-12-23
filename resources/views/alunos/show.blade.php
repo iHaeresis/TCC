@@ -2,12 +2,47 @@
 
 @section('content')
 
+{{-- tentanto ocultar/mostrar via JS--}}
+<style>
+    #teste {
+
+    }
+</style>
+
+<script>
+    function Mostrar() {
+        var x = document.getElementById("teste");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function Mostrar2() {
+        var x = document.getElementById("teste2");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+{{-- --}}
+
+
     <div class="w-4/5 m-auto text-left">
         <div class="py-15">
             <h1 class="text-6xl font-bold">
                 {{ $aluno->aluno_nome }} {{ $aluno->aluno_sobrenome }}
             </h1>
         </div>
+
+    <button onclick="Mostrar()">
+        <B>Dados do Aluno</B>
+    </button>
+
+    <div id="teste">
 
     <div class="">
         <div class="py-15">
@@ -25,6 +60,24 @@
             <h4 class="text-4xl font-medium italic">Genero:</h4>
             <span class="text-black-500 py-5"><br>
                <p> {{ $aluno->aluno_genero }} </p>
+            </span>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="py-15">
+            <h4 class="text-4xl font-medium italic">Possui deficiciencia?</h4>
+            <span class="text-black-500 py-5"><br>
+               <p class="capitalize"> {{ $aluno->aluno_deficiencia }} </p>
+            </span>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="py-15">
+            <h4 class="text-4xl font-medium italic">Possui restrição alimentar?</h4>
+            <span class="text-black-500 py-5"><br>
+               <p class="capitalize"> {{ $aluno->aluno_alimentacao }} </p>
             </span>
         </div>
     </div>
@@ -49,6 +102,15 @@
         </div>
     </div>
 
+</div>
+
+<br>
+<button onclick="Mostrar2()">
+    <B>Pareceres do Aluno</B>
+</button>
+
+<div id="teste2">
+
     <div class="">
         <div class="py-15">
             <h4 class="text-4xl font-medium italic">Descrição pelo Professor</h4>
@@ -58,6 +120,7 @@
         </div>
     </div>
 
+
     <div class="">
         <div class="py-15">
             <h4 class="text-4xl font-medium italic">Descrição pelo Monitor</h4>
@@ -65,6 +128,93 @@
                 {{ $aluno->aluno_descricao2 }}
             </span>
         </div>
+    </div>
+
+
+
+</button>
+<B>Anamnese</B>
+<div id="teste2">
+
+    <div class="">
+        <div class="py-15">
+            <h4 class="text-4xl font-medium italic">Desenvolvimento Psicomotor</h4>
+            <span class="text-black-500 py-5"><br>
+                {{ $aluno->aluno_anam_psicomotor }}
+            </span>
+        </div>
+    </div>
+
+
+    <div class="">
+        <div class="py-15">
+            <h4 class="text-4xl font-medium italic">Desenvolvimento da Linguagem</h4>
+            <span class="text-black-500 py-5"><br>
+                {{ $aluno->aluno_anam_linguagem }}
+            </span>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="py-15">
+            <h4 class="text-4xl font-medium italic">Comportamentos e Hábitos</h4>
+            <span class="text-black-500 py-5"><br>
+                {{ $aluno->aluno_anam_comportamento }}
+            </span>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="py-15">
+            <h4 class="text-4xl font-medium italic">Família em relação ao educando</h4>
+            <span class="text-black-500 py-5"><br>
+                {{ $aluno->aluno_anam_familia }}
+            </span>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="py-15">
+            <h4 class="text-4xl font-medium italic">Independência do Educando</h4>
+            <span class="text-black-500 py-5"><br>
+                {{ $aluno->aluno_anam_independencia }}
+            </span>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="py-15">
+            <h4 class="text-4xl font-medium italic">Outras informações</h4>
+            <span class="text-black-500 py-5"><br>
+                {!! $aluno->aluno_anam_infos !!}
+            </span>
+        </div>
+    </div>
+
+            {{-- Adicionando um botão para editar se o usuário é o criador do aluno --}}
+
+            @if (isset(Auth::user()->id) && Auth::user()->id == $aluno->user_id)
+            <span class="float-right">
+                <a href="/alunos/{{ $aluno->id }}/edit"
+                    class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
+                        Editar
+                </a>
+            </span>
+
+            <span class="float-right">
+                    <form
+                        action="/alunos/{{ $aluno->id }}"
+                        method="POST">
+                        @csrf
+                        @method('delete')
+
+                        <button
+                            class="text-red-500 pr-3"
+                            type="submit">
+                                Deletar
+                        </button>
+                    </form>
+            @endif
     </div>
 
 
@@ -77,5 +227,7 @@
 
         <br><br>
     </div>
+
+</div>
 
 @endsection

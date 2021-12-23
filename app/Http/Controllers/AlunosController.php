@@ -65,9 +65,21 @@ class AlunosController extends Controller
             'aluno_descricao2' => 'sometimes',
             'aluno_telefone' => 'sometimes',
             'aluno_email' => 'sometimes',
+            'aluno_genero' => 'sometimes',
+            'aluno_deficiencia' => 'sometimes',
+            'aluno_alimentacao' => 'sometimes',
+            'aluno_anam_alimentacao' => 'sometimes',
+            'aluno_anam_independencia' => 'sometimes',
+            'aluno_anam_infos' => 'sometimes',
+            'aluno_anam_psicomotor' => 'sometimes',
+            'aluno_anam_linguagem' => 'sometimes',
+            'aluno_anam_familia' => 'sometimes',
+            'aluno_anam_comportamento' => 'sometimes',
             'image' => 'sometimes|mimes: jpg,png,jpg|max:5048'
         ]);
 
+
+        //nomeando o arquivo de imagem e salvando no server
         $newImageName = uniqid() . '-' . $request->aluno_nome . '.' .
         $request->image->extension();
 
@@ -84,6 +96,18 @@ class AlunosController extends Controller
             'aluno_descricao2' => $request->input('aluno_descricao2'),
             'aluno_telefone' => $request -> input('aluno_telefone'),
             'aluno_email' => $request->input('aluno_email'),
+            'aluno_genero' => $request->input('aluno_genero'),
+            'aluno_deficiencia' => $request -> input ('aluno_deficiencia'),
+            'aluno_alimentacao' => $request -> input ('aluno_alimentacao'),
+
+            'aluno_anam_alimentacao' => $request -> input ('aluno_anam_alimentacao'),
+            'aluno_anam_independencia' => $request -> input ('aluno_anam_independencia'),
+            'aluno_anam_infos' => $request -> input ('aluno_anam_infos'),
+            'aluno_anam_psicomotor' => $request -> input ('aluno_anam_psicomotor'),
+            'aluno_anam_comportamento' => $request -> input ('aluno_anam_comportamento'),
+            'aluno_anam_linguagem' => $request -> input ('aluno_anam_linguagem'),
+            'aluno_anam_familia' => $request -> input ('aluno_anam_familia'),
+
             //'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->title),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
@@ -149,7 +173,17 @@ class AlunosController extends Controller
             'aluno_descricao1' => 'sometimes',
             'aluno_descricao2' => 'sometimes',
             'aluno_telefone' => 'sometimes',
+            'aluno_deficiencia' => 'sometimes',
             'aluno_email' => 'sometimes',
+            'aluno_genero' => 'sometimes',
+            'aluno_alimentacao' => 'sometimes',
+            'aluno_anam_alimentacao' => 'sometimes',
+            'aluno_anam_independencia' => 'sometimes',
+            'aluno_anam_infos' => 'sometimes',
+            'aluno_anam_psicomotor' => 'sometimes',
+            'aluno_anam_linguagem' => 'sometimes',
+            'aluno_anam_familia' => 'sometimes',
+            'aluno_anam_comportamento' => 'sometimes',
         ]);
 
         Aluno::where('id', $id)
@@ -163,6 +197,16 @@ class AlunosController extends Controller
                 'aluno_descricao2' => $request->input('aluno_descricao2'),
                 'aluno_telefone' => $request -> input('aluno_telefone'),
                 'aluno_email' => $request->input('aluno_email'),
+                'aluno_genero' => $request->input('aluno_genero'),
+                'aluno_deficiencia' => $request->input('aluno_deficiencia'),
+                'aluno_alimentacao' => $request -> input ('aluno_alimentacao'),
+                'aluno_anam_alimentacao' => $request -> input ('aluno_anam_alimentacao'),
+                'aluno_anam_independencia' => $request -> input ('aluno_anam_independencia'),
+                'aluno_anam_infos' => $request -> input ('aluno_anam_infos'),
+                'aluno_anam_psicomotor' => $request -> input ('aluno_anam_psicomotor'),
+                'aluno_anam_comportamento' => $request -> input ('aluno_anam_comportamento'),
+                'aluno_anam_linguagem' => $request -> input ('aluno_anam_linguagem'),
+                'aluno_anam_familia' => $request -> input ('aluno_anam_familia'),
                // 'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->aluno_nome),
                 'user_id' => auth()->user()->id
             ]);

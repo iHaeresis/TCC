@@ -54,7 +54,7 @@
 
 
         <label>Selecione o gênero do Aluno</label><br>
-        <select name = "aluno_genero">
+        <select name="aluno_genero">
             <option value = "Masculino">Masculino</option>
             <option value = "Sem genero">Sem genero</option>
             <option value = "Feminino">Feminino</option>
@@ -95,7 +95,31 @@
         <label>Nome do Pai:</label><br>
         <input type="text" name="aluno_pai" value="{{ $aluno->aluno_pai}}"><br><br>
 
+        <hr>
         <br><br>
+
+        <label>O aluno possui algum tipo de deficiência?</label>
+        <select name = "aluno_deficiencia">
+            <option value = "sim" selected>Sim</option>
+            <option value = "nao">Não</option>
+        </select>
+
+        <br><br>
+
+        <label>O aluno possui algum tipo de restrição alimentar?</label>
+        <select name = "aluno_alimentacao">
+            <option value = "sim">Sim</option>
+            <option value = "nao">Não</option>
+        </select>
+        <br><br>
+        <label>Restrição Alimentar</label><br>
+        <textarea
+            name="aluno_anam_alimentacao"
+            placeholder=""
+            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            {{ $aluno->aluno_anam_alimentacao }}
+        </textarea><br>
+
         <hr>
         <br><br>
 
@@ -125,7 +149,64 @@
             placeholder=""
             class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
             {{ $aluno->aluno_descricao2 }}
+        </textarea>
+
+        <br>
+        <br>
+        <hr>
+        <br>
+        <B>Anamnese</B>
+        <br><br>
+        <label>Desenvolvimento Psicomotor</label><br>
+        <textarea
+            name="aluno_anam_psicomotor"
+            placeholder=""
+            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            {{ $aluno->aluno_anam_psicomotor }}
         </textarea><br>
+
+        <label>Desenvolvimento Linguagem</label><br>
+        <textarea
+            name="aluno_anam_linguagem"
+            placeholder=""
+            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            {{ $aluno->aluno_anam_linguagem }}
+        </textarea><br>
+
+        <label>Desenvolvimento Comportamental e Hábitos</label><br>
+        <textarea
+            name="aluno_anam_comportamento"
+            placeholder=""
+            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            {{ $aluno->aluno_anam_comportamento }}
+        </textarea><br>
+
+        <label>Desenvolvimento Família em relação ao Aluno</label><br>
+        <textarea
+            name="aluno_anam_familia"
+            placeholder=""
+            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            {{ $aluno->aluno_anam_familia }}
+        </textarea><br>
+
+        <label>Independência do Aluno</label><br>
+        <textarea
+            name="aluno_anam_independencia"
+            placeholder=""
+            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            {{ $aluno->aluno_anam_independencia }}
+        </textarea><br>
+
+        <label>Outras informações</label><br>
+        <textarea
+            id="summary-ckeditor"
+            name="aluno_anam_infos"
+            placeholder=""
+            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            {{ $aluno->aluno_anam_infos }}
+        </textarea><br>
+
+
 
         <div class="bg-grey-lighter pt-15">
             <label class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg shadow-lg tracking-wider uppercase border border-blue coursos-pointer">
@@ -138,6 +219,8 @@
                     class="hidden">
             </label>
         </div>
+
+
 
         <button
             type="submit"
