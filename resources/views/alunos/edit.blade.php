@@ -115,9 +115,10 @@
         <label>Restrição Alimentar</label><br>
         <textarea
             name="aluno_anam_alimentacao"
-            placeholder=""
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
-            {{ $aluno->aluno_anam_alimentacao }}
+            placeholder="Digite aqui as informações referentes a alimentação do aluno"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor0">
+                {{ $aluno->aluno_anam_alimentacao }}
         </textarea><br>
 
         <hr>
@@ -136,9 +137,10 @@
         <label>Parecer do Aluno pelo Professor</label><br>
         <textarea
             name="aluno_descricao1"
-            placeholder="{{ $aluno->aluno_descricao1 }}"
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
-            {{ $aluno->aluno_descricao1 }}
+            placeholder="Insira seus pareceres sobre o aluno"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor1">
+                {{ $aluno->aluno_descricao1 }}
         </textarea><br>
 
         <br>
@@ -146,9 +148,10 @@
         <label>Parecer do Aluno pelo Monitor</label><br>
         <textarea
             name="aluno_descricao2"
-            placeholder=""
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
-            {{ $aluno->aluno_descricao2 }}
+            placeholder="Insira seus pareceres sobre o aluno"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor2">
+                {{ $aluno->aluno_descricao2 }}
         </textarea>
 
         <br>
@@ -160,50 +163,55 @@
         <label>Desenvolvimento Psicomotor</label><br>
         <textarea
             name="aluno_anam_psicomotor"
-            placeholder=""
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
-            {{ $aluno->aluno_anam_psicomotor }}
+            placeholder="Insira as informações psicomotoras do aluno"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor3">
+                {{ $aluno->aluno_anam_psicomotor }}
         </textarea><br>
 
         <label>Desenvolvimento Linguagem</label><br>
         <textarea
             name="aluno_anam_linguagem"
-            placeholder=""
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
-            {{ $aluno->aluno_anam_linguagem }}
+            placeholder="Insira as informações sobre a linguagem"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor4">
+                {{ $aluno->aluno_anam_linguagem }}
         </textarea><br>
 
         <label>Desenvolvimento Comportamental e Hábitos</label><br>
         <textarea
             name="aluno_anam_comportamento"
-            placeholder=""
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
+            placeholder="Insira as informações referentes aos comportamentos e hábitos do aluno"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor5">
             {{ $aluno->aluno_anam_comportamento }}
         </textarea><br>
 
         <label>Desenvolvimento Família em relação ao Aluno</label><br>
         <textarea
             name="aluno_anam_familia"
-            placeholder=""
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
-            {{ $aluno->aluno_anam_familia }}
+            placeholder="Insira informações referentes família e aluno"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor6">
+                {{ $aluno->aluno_anam_familia }}
         </textarea><br>
 
         <label>Independência do Aluno</label><br>
         <textarea
             name="aluno_anam_independencia"
-            placeholder=""
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
-            {{ $aluno->aluno_anam_independencia }}
+            placeholder="Insira informações referentes família e aluno"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor7">
+                {{ $aluno->aluno_anam_independencia }}
         </textarea><br>
 
         <label>Outras informações</label><br>
         <textarea
-            id="editor"
             name="aluno_anam_infos"
-            placeholder=""
-            class="py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none">
-            {{ $aluno->aluno_anam_infos }}
+            placeholder="Insira outras informações pertinenentes ao aluno"
+            class="ck_editor_txt py-20 bg-grey-200 block border-b-2 w-full h-60 text-xl outline-none"
+            id="ckeditor8">
+                {{ $aluno->aluno_anam_infos }}
         </textarea><br>
 
 
@@ -238,11 +246,14 @@
 <br><br>
 </div>
 
-<script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
-<script>
-  ClassicEditor.create(document.querySelector('#editor')).catch((error) => {
-    console.error(error);
-  });
-</script>
+    {{--
+    Adcionando o CKEDITOR aos multiplos 'textarea'
+    --}}
+    <script>
+        var allEditors = document.querySelectorAll('.ck_editor_txt');
+        for (var i = 0; i < allEditors.length; ++i) {
+          ClassicEditor.create(allEditors[i]);
+        }
+    </script>
 
 @endsection

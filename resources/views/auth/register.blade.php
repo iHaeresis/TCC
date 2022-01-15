@@ -1,16 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
-    <div class="flex">
-        <div class="w-full">
-            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-                <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                    {{ __('Cadastro') }}
-                </header>
-
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST"
+<body class="font-mono bg-gray-400">
+    <!-- Container -->
+    <div class="container mx-auto">
+        <div class="flex justify-center px-6 my-12">
+            <!-- Row -->
+            <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+                <!-- Col -->
+                <div
+                    class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+                    style="background-image: url('https://psmag.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_700/MTI4NTEwMTQ0MzQ5Nzk0Mjc0/shutterstock_211281496jpg.webp')"
+                >
+                </div>
+                <!-- Col -->
+                <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+                    <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST"
                     action="{{ route('register') }}">
                     @csrf
 
@@ -85,9 +91,10 @@
                     </div>
                 </form>
 
-            </section>
+                </div>
+            </div>
         </div>
     </div>
-    <br><br>
-</main>
+</body>
+
 @endsection

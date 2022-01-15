@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aluno;
-use Cviebrock\EloquentSluggable\Services\SlugService;
+//use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AlunosController extends Controller
 {
@@ -78,12 +78,16 @@ class AlunosController extends Controller
             'image' => 'sometimes|mimes: jpg,png,jpg|max:5048'
         ]);
 
-
         //nomeando o arquivo de imagem e salvando no server
-        $newImageName = uniqid() . '-' . $request->aluno_nome . '.' .
-        $request->image->extension();
+        if ($request->hasFile('image')) {
+                $newImageName = uniqid() . '-' . $request->aluno_nome . '.' .
+                $request->image->extension();
 
-        $request->image->move(public_path('images'), $newImageName);
+                $request->image->move(public_path('images'), $newImageName);
+        }
+        else{
+            $newImageName = null;
+        }
 
 
         Aluno::create([

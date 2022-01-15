@@ -21,18 +21,19 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [PagesController::class, 'index']);
+
+Route::get('/alunos', [PagesController::class, 'alunos']);
 Route::resource('/alunos', AlunosController::class);
 
-Route::get('/about', [PagesController::class, 'about']);
-
-Route::get('/escolas',[EscolasController::class, 'index']);
+Route::get('/escolas',[EscolasController::class, 'escolas']);
 route::resource('/escolas', EscolasController::class);
 
-Route::get('/cid',[Cid::class, 'index']);
+Route::get('/cid',[Cid::class, 'cid']);
 route::resource('/cid', CidsController::class);
-
 
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/about', [PagesController::class, 'about']);
+
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
