@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [PagesController::class, 'index']);
+Route::get('/', [PagesController::class, 'index']);//mostrando a página index
 
 Route::get('/alunos', [PagesController::class, 'alunos']);
 Route::resource('/alunos', AlunosController::class);

@@ -25,16 +25,8 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        /*
-        $post = aluno::all();
-        dd($post);
-        return view('alunos.index');
-        */
-
         return view('alunos.index')
             ->with('alunos', Aluno::orderBy('updated_at', 'DESC')->get());
-
-
     }
 
     /**

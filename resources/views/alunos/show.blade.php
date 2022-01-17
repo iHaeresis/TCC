@@ -105,7 +105,7 @@
             <div class="pb-4">
                 <h4 class="leading-6 pl-9 text-justify font-semibold">- Descrição pelo Monitor</h4>
                 <span class="leading-6 font-light pl-9 text-justify">
-                    {{ $aluno->aluno_descricao2 }}
+                    {!! $aluno->aluno_descricao2 !!}
                 </span>
             </div>
          </div>
