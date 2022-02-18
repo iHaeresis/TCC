@@ -39,28 +39,41 @@
     <div clas="">
         <hr>
     <div>
-    <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
+    <div class="
+    mt-8 sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row
+    sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
 
-        <div class="m-auto sm:m-auto text-left w-4/5 ">
-            <a href="/alunos" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                Cadastrar Aluno
-            </a>
-        </div>
-        <div class="m-auto sm:m-auto text-left w-4/5 ">
-            <a href="/escolas" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                Cadastrar Escola
-            </a>
-        </div>
 
-        <div class="m-auto sm:m-auto text-left w-4/5 ">
-            <a href="/cid" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                Cadastrar CID
+
+        <div class="pt-15 w-4/5 m-auto pb-6 text-center">
+            <a href="/alunos">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                    Alunos
+                </button>
             </a>
         </div>
 
-        <div class="m-auto sm:m-auto text-left w-4/5 block">
-            <a href="/#" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                Não Implementado
+        <div class="pt-15 w-4/5 m-auto pb-6 text-center">
+            <a href="#">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded opacity-50 cursor-not-allowed">
+                    Não Implementado
+                </button>
+            </a>
+        </div>
+
+        <div class="pt-15 w-4/5 m-auto pb-6 text-center">
+            <a href="#">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded opacity-50 cursor-not-allowed">
+                    Não Implementado
+                </button>
+            </a>
+        </div>
+
+        <div class="pt-15 w-4/5 m-auto pb-6 text-center">
+            <a href="#">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded opacity-50 cursor-not-allowed">
+                    Não Implementado
+                </button>
             </a>
         </div>
 

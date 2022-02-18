@@ -15,7 +15,6 @@ class Anamnese extends Model
         'anam_psicomotor',
         'anam_alimentacao',
         'anam_infos',
-        'anam_data',
         'aluno_id'];
 
 

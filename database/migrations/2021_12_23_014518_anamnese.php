@@ -13,7 +13,7 @@ class Anamnese extends Migration
      */
     public function up()
     {
-        Schema::create('anamnse', function (Blueprint $table){
+        Schema::create('anamnese', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->longText('anam_alimentaacao')->nullable();
             $table->longText('anam_psicomotor')->nullable(); //desenvolvimento psicomotor
@@ -34,6 +34,6 @@ class Anamnese extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anamnse');
+        Schema::dropIfExists('anamnese');
     }
 }

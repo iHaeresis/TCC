@@ -50,7 +50,7 @@
 
 
         <label>Data de Nascimento:</label><br>
-        <input type="date" name="aluno_nascimento" placeholder="{{ $aluno->aluno_nascimento }}"><br><BR>
+        <input type="date" name="aluno_nascimento" placeholder="{{ $aluno->aluno_nascimento }}" required><br><BR>
 
 
         <label>Selecione o gênero do Aluno</label><br>

@@ -14,7 +14,7 @@ class Escolas extends Migration
     public function up()
     {
         Schema::create('escolas', function (Blueprint $table){
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('escola_nome');
             $table->string('escola_cep')->nullable();
                 $table->string('escola_rua')->nullable();
@@ -22,6 +22,7 @@ class Escolas extends Migration
                 $table->string('escola_bairro')->nullable();
             $table->integer('escola_telefone')->nullable();
             $table->string('escola_email')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -32,6 +33,6 @@ class Escolas extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('escolas');
     }
 }

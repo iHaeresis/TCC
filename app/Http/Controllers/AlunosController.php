@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anamnese;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
+use App\Models\Escola;
+use Illuminate\Http\DB;
+
 //use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AlunosController extends Controller
@@ -67,7 +71,8 @@ class AlunosController extends Controller
             'aluno_anam_linguagem' => 'sometimes',
             'aluno_anam_familia' => 'sometimes',
             'aluno_anam_comportamento' => 'sometimes',
-            'image' => 'sometimes|mimes: jpg,png,jpg|max:5048'
+            'image' => 'sometimes|mimes: jpg,png,jpg|max:5048',
+            'escola_id' => 'soemetimes'
         ]);
 
         //nomeando o arquivo de imagem e salvando no server
@@ -106,8 +111,10 @@ class AlunosController extends Controller
 
             //'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->title),
             'image_path' => $newImageName,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            //'escola_id' =>
         ]);
+
 
         return redirect( '/alunos')->with('message', 'Aluno cadastrado com sucesso!');
     }
@@ -173,13 +180,13 @@ class AlunosController extends Controller
             'aluno_email' => 'sometimes',
             'aluno_genero' => 'sometimes',
             'aluno_alimentacao' => 'sometimes',
-            'aluno_anam_alimentacao' => 'sometimes',
-            'aluno_anam_independencia' => 'sometimes',
-            'aluno_anam_infos' => 'sometimes',
-            'aluno_anam_psicomotor' => 'sometimes',
-            'aluno_anam_linguagem' => 'sometimes',
-            'aluno_anam_familia' => 'sometimes',
-            'aluno_anam_comportamento' => 'sometimes',
+                'aluno_anam_alimentacao' => 'sometimes',
+                'aluno_anam_independencia' => 'sometimes',
+                'aluno_anam_infos' => 'sometimes',
+                'aluno_anam_psicomotor' => 'sometimes',
+                'aluno_anam_linguagem' => 'sometimes',
+                'aluno_anam_familia' => 'sometimes',
+                'aluno_anam_comportamento' => 'sometimes',
         ]);
 
         Aluno::where('id', $id)
@@ -196,16 +203,18 @@ class AlunosController extends Controller
                 'aluno_genero' => $request->input('aluno_genero'),
                 'aluno_deficiencia' => $request->input('aluno_deficiencia'),
                 'aluno_alimentacao' => $request -> input ('aluno_alimentacao'),
-                'aluno_anam_alimentacao' => $request -> input ('aluno_anam_alimentacao'),
-                'aluno_anam_independencia' => $request -> input ('aluno_anam_independencia'),
-                'aluno_anam_infos' => $request -> input ('aluno_anam_infos'),
-                'aluno_anam_psicomotor' => $request -> input ('aluno_anam_psicomotor'),
-                'aluno_anam_comportamento' => $request -> input ('aluno_anam_comportamento'),
-                'aluno_anam_linguagem' => $request -> input ('aluno_anam_linguagem'),
-                'aluno_anam_familia' => $request -> input ('aluno_anam_familia'),
+                    'aluno_anam_alimentacao' => $request -> input ('aluno_anam_alimentacao'),
+                    'aluno_anam_independencia' => $request -> input ('aluno_anam_independencia'),
+                    'aluno_anam_infos' => $request -> input ('aluno_anam_infos'),
+                    'aluno_anam_psicomotor' => $request -> input ('aluno_anam_psicomotor'),
+                    'aluno_anam_comportamento' => $request -> input ('aluno_anam_comportamento'),
+                    'aluno_anam_linguagem' => $request -> input ('aluno_anam_linguagem'),
+                    'aluno_anam_familia' => $request -> input ('aluno_anam_familia'),
                // 'slug' =>  SlugService::createSlug(Aluno::class, 'slug', $request->aluno_nome),
                 'user_id' => auth()->user()->id
             ]);
+
+
 
             return redirect('/alunos')
                 ->with('message', 'Os dados foram atualizados');
@@ -225,4 +234,7 @@ class AlunosController extends Controller
         return redirect('/alunos')
         ->with('message', 'O aluno foi apagado do sistema');
     }
+
+
 }
+
